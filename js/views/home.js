@@ -100,8 +100,8 @@ export default {
     const rmin = store.get('routine', 30);
     const dayNames = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
 
-    el.innerHTML = `
-    <section class="hero glass">
+    el.innerHTML = `<div class="pdash">
+    <section class="hero glass pd-hero">
       <div class="hero-t">
         <span class="kicker">Belajar piano · dari nol sampai jazz</span>
         <h1>Main piano, pahami chord, latih telinga — semuanya di satu tempat.</h1>
@@ -121,14 +121,13 @@ export default {
       </div>
     </section>
 
-    <section class="grid2">
-      <div class="card glass">
+      <div class="card glass pd-routine">
         <div class="card-h"><h2>Rutinitas latihan harian</h2>
           <div class="seg" id="rseg">${[15, 30, 45].map(m => `<button data-m="${m}" class="${m === rmin ? 'on' : ''}">${m} mnt</button>`).join('')}</div></div>
         <ol class="routine" id="routine"></ol>
         <p class="hint">Tip: latihan pendek tiap hari jauh lebih efektif daripada lama seminggu sekali. Waktu latihan dihitung otomatis saat Anda memainkan nada.</p>
       </div>
-      <div class="card glass">
+      <div class="card glass pd-next">
         <div class="card-h"><h2>Lanjutkan: Level ${curLv.n}</h2><span class="badge">${curLv.tier}</span></div>
         <p class="lead">${esc(curLv.title)}</p>
         <ul class="todo">${curLv.items.filter(i => !done[i[0]]).slice(0, 4).map(i => `<li><a href="${i[2]}">${esc(i[1])}</a></li>`).join('')}</ul>
@@ -142,21 +141,20 @@ export default {
           </ul>
         </div>
       </div>
-    </section>
 
-    <section class="card glass">
+    <section class="card glass pd-map">
       <div class="card-h"><h2>Peta belajar · 9 level</h2><span class="muted">Centang yang sudah dikuasai — tersimpan di perangkat ini</span></div>
       <div class="levels">${['Pemula', 'Menengah', 'Mahir / Expert'].map(t => `
         <div class="tier"><h3 class="tier-h t-${t[0]}">${t}</h3>
         ${LEVELS.filter(l => l.tier === t).map(l => {
           const n = l.items.filter(i => done[i[0]]).length;
-          return `<details class="lv" ${l === curLv ? 'open' : ''}><summary><span class="lvn">${l.n}</span><span class="lvt">${esc(l.title)}</span><span class="lvp">${n}/${l.items.length}</span><i class="bar"><b style="width:${n / l.items.length * 100}%"></b></i></summary>
+          return `<details class="lv"><summary><span class="lvn">${l.n}</span><span class="lvt">${esc(l.title)}</span><span class="lvp">${n}/${l.items.length}</span><i class="bar"><b style="width:${n / l.items.length * 100}%"></b></i></summary>
             <ul>${l.items.map(i => `<li><label><input type="checkbox" data-id="${i[0]}" ${done[i[0]] ? 'checked' : ''}><span>${esc(i[1])}</span></label><a href="${i[2]}" class="go">Buka →</a></li>`).join('')}</ul></details>`;
         }).join('')}</div>`).join('')}
       </div>
     </section>
 
-    <section class="grid3">
+    <section class="grid3 pd-feat">
       <a class="feat glass" href="#/chord">${icon('chord')}<b>Kamus chord</b><span>${CHORDS.length} jenis chord × 12 kunci, rumus, ejaan nada, inversi & voicing jazz.</span></a>
       <a class="feat glass" href="#/progresi">${icon('prog')}<b>Progresi & iringan</b><span>Pop, blues, ii–V–I, tritone sub, rhythm changes — 7 pola iringan.</span></a>
       <a class="feat glass" href="#/latihan/telinga">${icon('ear')}<b>Latihan telinga</b><span>Tebak interval & kualitas chord dari suara.</span></a>
@@ -164,7 +162,7 @@ export default {
       <a class="feat glass" href="#/latihan/tangga">${icon('target')}<b>Tangga nada</b><span>Penjarian standar, mode tunggu & metronom.</span></a>
       <a class="feat glass" href="#/lagu">${icon('music')}<b>Lagu (falling notes)</b><span>12 lagu domain publik: dengar, tunggu, atau main dengan skor.</span></a>
     </section>
-    <footer class="foot">Suara grand piano: Salamander Grand Piano (Alexander Holm, CC-BY 3.0) · Semua lagu domain publik · Amatu Piano</footer>`;
+    <footer class="foot">Suara grand piano: Salamander Grand Piano (Alexander Holm, CC-BY 3.0) · Semua lagu domain publik · Amatu Piano</footer></div>`;
 
     const routine = () => {
       const m = store.get('routine', 30);
