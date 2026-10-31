@@ -1,6 +1,6 @@
 # Amatu Piano
 
-Situs belajar piano dari dasar sampai jazz — https://liemyo.github.io/piano/
+Situs belajar piano dari dasar sampai jazz — https://amatu-id.github.io/piano/
 
 - **Kamus chord**: 44 jenis chord (triad, nada tambahan, septim, jazz extended, altered) × 12 kunci, ejaan nada, inversi & voicing (shell, rootless A/B, drop 2, spread, kuart, upper structure).
 - **Keyboard interaktif**: suara Salamander Grand Piano, mouse/sentuh, keyboard komputer, Web MIDI, deteksi nama chord, panduan tangga nada, rekam + unduh MIDI.
